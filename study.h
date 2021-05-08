@@ -1,3 +1,6 @@
+#ifndef _STUDY_H
+#define _STUDY_H
+
 typedef struct
 {
     char name[20]; //student name
@@ -17,10 +20,12 @@ int selectMenu();
 
 int createStudent(Student *s);
 
-int readStudent(Student *s);
+void readStudent(Student s);
 
 int updateStudent(Student *s);
 
 int deleteStudent(Student *S);
 
 int readGroup(Group *g);
+
+#endif

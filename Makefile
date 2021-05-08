@@ -4,6 +4,6 @@ TARGET = study
 OBJECTS = main.c study.o manager.o
 all : $(TARGET)
 $(TARGET) : $(OBJECTS)
- $(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 clean :
- rm *.o study
+	rm *.o study
