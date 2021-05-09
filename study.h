@@ -24,7 +24,9 @@ void readStudent(Student s);
 
 int updateStudent(Student *s);
 
-int deleteStudent(Student *S);
+int deleteStudent(Student *s);
+
+int createGroup(Student *s);
 
 int readGroup(Group *g);
 
