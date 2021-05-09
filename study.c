@@ -14,18 +14,18 @@ int selectMenu()
     int menu;
 
     printf("\n*****Study Together*****\n");
-    printf("1. ÇĞ»ı Á¶È¸ÇÏ±â       *\n");
-    printf("2. ±×·ì Á¶È¸ÇÏ±â       *\n");
-    printf("3. ÇĞ»ı Ãß°¡ÇÏ±â       *\n");
-    printf("4. ÇĞ»ı ¼öÁ¤ÇÏ±â       *\n");
-    printf("5. ÇĞ»ı »èÁ¦ÇÏ±â       *\n");
-    printf("6. ±×·ì »ı¼ºÇÏ±â       *\n");
-    printf("7. ÇĞ»ı °Ë»öÇÏ±â       *\n");
-    printf("8. ±×·ì °Ë»öÇÏ±â       *\n");
-    printf("9. ±×·ì ÀúÀåÇÏ±â       *\n");
-    printf("0. ÇÁ·Î±×·¥ Á¾·á       *\n");
+    printf("1. í•™ìƒ ì¡°íšŒí•˜ê¸°       *\n");
+    printf("2. ê·¸ë£¹ ì¡°íšŒí•˜ê¸°       *\n");
+    printf("3. í•™ìƒ ì¶”ê°€í•˜ê¸°       *\n");
+    printf("4. í•™ìƒ ìˆ˜ì •í•˜ê¸°       *\n");
+    printf("5. í•™ìƒ ì‚­ì œí•˜ê¸°       *\n");
+    printf("6. ê·¸ë£¹ ìƒì„±í•˜ê¸°       *\n");
+    printf("7. í•™ìƒ ê²€ìƒ‰í•˜ê¸°       *\n");
+    printf("8. ê·¸ë£¹ ê²€ìƒ‰í•˜ê¸°       *\n");
+    printf("9. ê·¸ë£¹ ì €ì¥í•˜ê¸°       *\n");
+    printf("0. í”„ë¡œê·¸ë¨ ì¢…ë£Œ       *\n");
     printf("************************\n");
-    printf("\n=> ¸Ş´º¸¦ °í¸£½Ã¿À : ");
+    printf("\n=> ë©”ë‰´ë¥¼ ê³ ë¥´ì‹œì˜¤ : ");
     scanf("%d", &menu);
 
     return menu;
@@ -33,14 +33,14 @@ int selectMenu()
 
 int createStudent(Student *s)
 {
-    printf("ÇĞ»ı ÀÌ¸§(ex. È«±æµ¿) : ");
+    printf("í•™ìƒ ì´ë¦„(ex. í™ê¸¸ë™) : ");
     scanf("%s", s->name);
-    printf("ÇĞ¹ø (ex. 21700***) : ");
+    printf("í•™ë²ˆ (ex. 21700***) : ");
     scanf("%s", s->id);
-    printf("ÇĞ³â : ");
+    printf("í•™ë…„ : ");
     scanf("%d", &s->year);
     getchar();
-    printf("Èñ¸Á °ú¸ñ (ex. ¼º°æÀÇ ÀÌÇØ) :");
+    printf("í¬ë§ ê³¼ëª© (ex. ì„±ê²½ì˜ ì´í•´) :");
     scanf("%[^\n]", s->sub);
 
     return 1;
@@ -53,14 +53,14 @@ void readStudent(Student s)
 
 int updateStudent(Student *s)
 {
-    printf("ÇĞ»ı ÀÌ¸§(ex. È«±æµ¿) : ");
+    printf("í•™ìƒ ì´ë¦„(ex. í™ê¸¸ë™) : ");
     scanf("%s", s->name);
-    printf("ÇĞ¹ø (ex. 21700***) : ");
+    printf("í•™ë²ˆ (ex. 21700***) : ");
     scanf("%s", s->id);
-    printf("ÇĞ³â : ");
+    printf("í•™ë…„ : ");
     scanf("%d", &s->year);
     getchar();
-    printf("Èñ¸Á °ú¸ñ (ex. ¼º°æÀÇ ÀÌÇØ) : ");
+    printf("í¬ë§ ê³¼ëª© (ex. ì„±ê²½ì˜ ì´í•´) : ");
     scanf("%[^\n]", s->sub);
 
     return 1;
@@ -73,15 +73,14 @@ int deleteStudent(Student *s)
     return 1;
 }
 
-int createGroup(Student s[])
+int createGroup(Student s[], int index)
 {   
     int stack = 1;
     int setG = 1;
     char targetSub[20];
-    printf("±×·ìÀ» »ı¼ºÇÒ °ú¸ñ(ex. ¼º°æÀÇ ÀÌÇØ) : ");
-    scanf("%s", &targetSub);
-    int size = sizeof(s);
-    for(int i = 0; i < s; i++){
+    printf("ê·¸ë£¹ì„ ìƒì„±í•  ê³¼ëª©(ex. ì„±ê²½ì˜ ì´í•´) : ");
+    scanf("%s", targetSub);
+    for(int i = 0; i < index; i++){
         if(s[i].sub == targetSub){
             if(stack%4 == 0) setG++;
             s[i].groubNumber = setG;
@@ -92,19 +91,18 @@ int createGroup(Student s[])
     return 1;
 }
 
-void readGroup(Student s[])
+void readGroup(Student s[], int index)
 {
     int gn = 10;
-    int size = sizeof(s);
     char targetsub[20];
 
-    printf("ºÒ·¯¿Ã ±×·ì¸®½ºÆ®ÀÇ °ú¸ñ(ex. ¼º°æÀÇ ÀÌÇØ");
-    scanf("%s", &targetsub);
+    printf("ë¶ˆëŸ¬ì˜¬ ê·¸ë£¹ë¦¬ìŠ¤íŠ¸ì˜ ê³¼ëª©(ex. ì„±ê²½ì˜ ì´í•´");
+    scanf("%s", targetsub);
 
     for(int i = 1; i < gn; i++){
         printf("Group %d\n", i);
-        for(int j = 0; j < size; j++){
-            if(s[j].sub == targetsub && s[j].groubNumber == i) printf("%d %s\t",s[j].id, s[j].name);
+        for(int j = 0; j < index; j++){
+            if(s[j].sub == targetsub && s[j].groubNumber == i) printf("%s %s\t",s[j].id, s[j].name);
         }
         printf("\n");
     }    
