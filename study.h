@@ -26,8 +26,8 @@ int updateStudent(Student *s);
 
 int deleteStudent(Student *s);
 
-int createGroup(Student *s);
+int createGroup(Student *s, int i);
 
-int readGroup(Group *g);
+int readGroup(Student *s, int i);
 
 #endif

@@ -74,8 +74,8 @@ int main()
                 }
             }
         }
-        else if (menu == 6) createGroup(st, index_st + 1);
-        else if (menu == 8) readGroup(st, index_st + 1);
+        else if (menu == 6) createGroup(st, index_st);
+        else if (menu == 8) readGroup(st, index_st);
     
     }
 }

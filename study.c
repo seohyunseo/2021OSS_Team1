@@ -73,7 +73,7 @@ int deleteStudent(Student *s)
     return 1;
 }
 
-int createGroup(Student s[], int index)
+void createGroup(Student s[], int index)
 {   
     int stack = 1;
     int setG = 1;
@@ -87,8 +87,6 @@ int createGroup(Student s[], int index)
             stack++;
         }
     }
-
-    return 1;
 }
 
 void readGroup(Student s[], int index)
