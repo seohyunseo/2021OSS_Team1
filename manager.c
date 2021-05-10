@@ -1,10 +1,11 @@
 #include "manager.h"
 #include <stdio.h>
+#include <string.h>
 
 int listStudent(Student *s, int count)
 {
     int i;
-    printf("No.\t ì´ë¦„\tí•™ë²ˆ\t\tí•™ë…„\tê³¼ëª©\n");
+    printf("No.\t ÀÌ¸§\tÇĞ¹ø\t\tÇĞ³â\t°ú¸ñ\n");
     for (i = 0; i < count; i++)
     {
         if (s[i].year == -1)
@@ -21,8 +22,47 @@ int selectStudent(Student *s, int count)
 {
     int no;
     listStudent(s, count);
-    printf("í•™ìƒ ëª©ë¡ë²ˆí˜¸(ì·¨ì†Œ:0) : ");
+    printf("ÇĞ»ı ¸ñ·Ï¹øÈ£(Ãë¼Ò:0) : ");
     scanf("%d", &no);
     getchar();
     return no;
+}
+
+int makeGroup(Student *s, Group *g, int count)
+{
+
+    char targetsub[10];
+    printf("±×·ìÀ» »ı¼ºÇÒ °ú¸ñ(ex. ¼º°æÀÇ ÀÌÇØ) : ");
+    scanf("%[^\n]", targetsub);
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < count; j++)
+        {
+            if (strstr(s[i].sub, targetsub))
+            {
+                strcpy(g->group_mem[j], s[j].id);
+                strcpy(g->sub, targetsub);
+                g->group_num = i + 1;
+                g->st_num = j + 1;
+            }
+            else
+                return 1;
+        }
+        printf("¸â¹ö ¼ö : %d", g[i].st_num);
+        printf("±×·ì ¼ö : %d", g[i].group_num);
+    }
+
+    return 1;
+}
+int listGroup(Group *g, int count)
+{
+    int i;
+    printf("°ú¸ñ¸í\t±×·ì ¹øÈ£\t±×·ì¿ø\n");
+    for (i = 0; i < count; i++)
+    {
+        readGroup(g[i]);
+    }
+    if (i == 0)
+        return 0;
+    return 1;
 }

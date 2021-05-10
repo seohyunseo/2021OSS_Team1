@@ -12,8 +12,9 @@ typedef struct
 typedef struct
 {
     char sub[20];
-    int group_mem[4][10];
+    char group_mem[4][10];
     int group_num;
+    int st_num;
 } Group;
 
 int selectMenu();
@@ -24,10 +25,8 @@ void readStudent(Student s);
 
 int updateStudent(Student *s);
 
-int deleteStudent(Student *s);
+int deleteStudent(Student *S);
 
-int createGroup(Student *s, int i);
-
-int readGroup(Student *s, int i);
+void readGroup(Group g);
 
 #endif

@@ -5,9 +5,10 @@
 int main()
 {
     Student st[20];
+    Group gr[10];
 
     int count_st = 0, count_gr = 0;
-    int index_st = 0;
+    int index_st = 0, index_gr = 0;
     int menu;
 
     while (1)
@@ -18,7 +19,7 @@ int main()
             break;
         if ((menu != 3) && (count_st == 0))
         {
-            printf("=> ë°ì´í„° ì—†ìŒ\n");
+            printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
             continue;
         }
         else if (menu == 3)
@@ -31,7 +32,7 @@ int main()
             int islist;
             islist = listStudent(st, index_st);
             if (islist == 0)
-                printf("=> ë°ì´í„° ì—†ìŒ\n");
+                printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
         }
         else if (menu == 4)
         {
@@ -43,9 +44,9 @@ int main()
             else if (no == 0)
                 continue;
             if (isup == 1)
-                printf("\n=> ìˆ˜ì • ì„±ê³µ\n");
+                printf("\n=> ¼öÁ¤ ¼º°ø\n");
             else
-                printf("\n=> ìˆ˜ì • ì‹¤íŒ¨\n");
+                printf("\n=> ¼öÁ¤ ½ÇÆÐ\n");
         }
         else if (menu == 5)
         {
@@ -54,28 +55,36 @@ int main()
             no = selectStudent(st, index_st);
             if (no > 0)
             {
-                printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (ì‚­ì œ:1)");
+                printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (»èÁ¦:1)");
                 scanf("%d", &con);
                 if (con == 1)
                 {
                     isdel = deleteStudent(&st[no - 1]);
                     if (isdel == 1)
                     {
-                        printf("\n=> ì‚­ì œ ì„±ê³µ\n");
+                        printf("\n=> »èÁ¦ ¼º°ø\n");
                         count_st--;
                     }
                     else
-                        printf("\n=> ì‚­ì œ ì‹¤íŒ¨\n");
+                        printf("\n=> »èÁ¦ ½ÇÆÐ\n");
                 }
                 else
                 {
-                    printf("\n=> ì‚­ì œ ì·¨ì†Œ\n");
+                    printf("\n=> »èÁ¦ Ãë¼Ò\n");
                     continue;
                 }
             }
         }
-        else if (menu == 6) count_gr = createGroup(st, index_st);
-        else if (menu == 8) readGroup(st, index_st);
-    
+        else if (menu == 6)
+        {
+            count_gr += makeGroup(st, &gr[index_gr++], index_st);
+        }
+        else if (menu == 2)
+        {
+            int islist;
+            islist = listGroup(gr, index_gr);
+            if (islist == 0)
+                printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
+        }
     }
 }

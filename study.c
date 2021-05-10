@@ -1,46 +1,53 @@
 #include <stdio.h>
-
-typedef struct
-{
-    char name[20]; //student name
-    char id[10];   //student ID
-    char sub[20];
-    int year;
-    int groubNumber;
-} Student;
+#include "study.h"
+// typedef struct
+// {
+//     char name[20]; //student name
+//     char id[10];   //student ID
+//     char sub[20];
+//     int year;
+// } Student;
+// typedef struct
+// {
+//     char sub[20];
+//     char group_mem[10][10];
+//     int group_num;
+//     int st_num;
+// } Group;
 
 int selectMenu()
 {
     int menu;
 
     printf("\n*****Study Together*****\n");
-    printf("1. í•™ìƒ ì¡°íšŒí•˜ê¸°       *\n");
-    printf("2. ê·¸ë£¹ ì¡°íšŒí•˜ê¸°       *\n");
-    printf("3. í•™ìƒ ì¶”ê°€í•˜ê¸°       *\n");
-    printf("4. í•™ìƒ ìˆ˜ì •í•˜ê¸°       *\n");
-    printf("5. í•™ìƒ ì‚­ì œí•˜ê¸°       *\n");
-    printf("6. ê·¸ë£¹ ìƒì„±í•˜ê¸°       *\n");
-    printf("7. í•™ìƒ ê²€ìƒ‰í•˜ê¸°       *\n");
-    printf("8. ê·¸ë£¹ ê²€ìƒ‰í•˜ê¸°       *\n");
-    printf("9. ê·¸ë£¹ ì €ì¥í•˜ê¸°       *\n");
-    printf("0. í”„ë¡œê·¸ë¨ ì¢…ë£Œ       *\n");
+    printf("1. ÇĞ»ı Á¶È¸ÇÏ±â       *\n");
+    printf("2. ±×·ì Á¶È¸ÇÏ±â       *\n");
+    printf("3. ÇĞ»ı Ãß°¡ÇÏ±â       *\n");
+    printf("4. ÇĞ»ı ¼öÁ¤ÇÏ±â       *\n");
+    printf("5. ÇĞ»ı »èÁ¦ÇÏ±â       *\n");
+    printf("6. ±×·ì »ı¼ºÇÏ±â       *\n");
+    printf("7. ÇĞ»ı °Ë»öÇÏ±â       *\n");
+    printf("8. ±×·ì °Ë»öÇÏ±â       *\n");
+    printf("9. ±×·ì ÀúÀåÇÏ±â       *\n");
+    printf("0. ÇÁ·Î±×·¥ Á¾·á       *\n");
     printf("************************\n");
-    printf("\n=> ë©”ë‰´ë¥¼ ê³ ë¥´ì‹œì˜¤ : ");
+    printf("\n=> ¸Ş´º¸¦ °í¸£½Ã¿À : ");
     scanf("%d", &menu);
+    getchar();
 
     return menu;
 }
 
 int createStudent(Student *s)
 {
-    printf("í•™ìƒ ì´ë¦„(ex. í™ê¸¸ë™) : ");
+    printf("ÇĞ»ı ÀÌ¸§(ex. È«±æµ¿) : ");
     scanf("%s", s->name);
-    printf("í•™ë²ˆ (ex. 21700***) : ");
+    printf("ÇĞ¹ø (ex. 21700***) : ");
     scanf("%s", s->id);
-    printf("í•™ë…„ : ");
+    printf("ÇĞ³â : ");
     scanf("%d", &s->year);
     getchar();
-    printf("í¬ë§ ê³¼ëª© (ex. ì„±ê²½ì˜ ì´í•´) :");
+    printf("Èñ¸Á °ú¸ñ (ex. ¼º°æÀÇ ÀÌÇØ) :");
     scanf("%[^\n]", s->sub);
 
     return 1;
@@ -53,14 +60,14 @@ void readStudent(Student s)
 
 int updateStudent(Student *s)
 {
-    printf("í•™ìƒ ì´ë¦„(ex. í™ê¸¸ë™) : ");
+    printf("ÇĞ»ı ÀÌ¸§(ex. È«±æµ¿) : ");
     scanf("%s", s->name);
-    printf("í•™ë²ˆ (ex. 21700***) : ");
+    printf("ÇĞ¹ø (ex. 21700***) : ");
     scanf("%s", s->id);
-    printf("í•™ë…„ : ");
+    printf("ÇĞ³â : ");
     scanf("%d", &s->year);
     getchar();
-    printf("í¬ë§ ê³¼ëª© (ex. ì„±ê²½ì˜ ì´í•´) : ");
+    printf("Èñ¸Á °ú¸ñ (ex. ¼º°æÀÇ ÀÌÇØ) :");
     scanf("%[^\n]", s->sub);
 
     return 1;
@@ -73,36 +80,12 @@ int deleteStudent(Student *s)
     return 1;
 }
 
-int createGroup(Student s[], int index)
-{   
-    int stack = 1;
-    int setG = 1;
-    char targetSub[20];
-    printf("ê·¸ë£¹ì„ ìƒì„±í•  ê³¼ëª©(ex. ì„±ê²½ì˜ ì´í•´) : ");
-    scanf("%s", targetSub);
-    for(int i = 0; i < index; i++){
-        if(s[i].sub == targetSub){
-            if(stack%4 == 0) setG++;
-            s[i].groubNumber = setG;
-            stack++;
-        }
-    }
-    return 1;
-}
-
-void readGroup(Student s[], int index)
+void readGroup(Group g)
 {
-    int gn = 10;
-    char targetsub[20];
-
-    printf("ë¶ˆëŸ¬ì˜¬ ê·¸ë£¹ë¦¬ìŠ¤íŠ¸ì˜ ê³¼ëª©(ex. ì„±ê²½ì˜ ì´í•´");
-    scanf("%s", targetsub);
-
-    for(int i = 1; i < gn; i++){
-        printf("Group %d\n", i);
-        for(int j = 0; j < index; j++){
-            if(s[j].sub == targetsub && s[j].groubNumber == i) printf("%s %s\t",s[j].id, s[j].name);
-        }
-        printf("\n");
-    }    
+    printf("%s\t%d\t\t", g.sub, g.group_num);
+    for (int i = 0; i < g.st_num; i++)
+    {
+        printf("%s ", g.group_mem[i]);
+    }
+    printf("\n");
 }
