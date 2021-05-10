@@ -5,9 +5,10 @@
 int main()
 {
     Student st[20];
+    Group gr[10];
 
     int count_st = 0, count_gr = 0;
-    int index_st = 0;
+    int index_st = 0, index_gr = 0;
     int menu;
 
     while (1)
@@ -73,6 +74,17 @@ int main()
                     continue;
                 }
             }
+        }
+        else if (menu == 6)
+        {
+            count_gr += makeGroup(st, &gr[index_gr++], index_st);
+        }
+        else if (menu == 2)
+        {
+            int islist;
+            islist = listGroup(gr, index_gr);
+            if (islist == 0)
+                printf("=> 데이터 없음\n");
         }
     }
 }

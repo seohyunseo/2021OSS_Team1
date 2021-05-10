@@ -1,11 +1,19 @@
 #include <stdio.h>
-typedef struct
-{
-    char name[20]; //student name
-    char id[10];   //student ID
-    char sub[20];
-    int year;
-} Student;
+#include "study.h"
+// typedef struct
+// {
+//     char name[20]; //student name
+//     char id[10];   //student ID
+//     char sub[20];
+//     int year;
+// } Student;
+// typedef struct
+// {
+//     char sub[20];
+//     char group_mem[10][10];
+//     int group_num;
+//     int st_num;
+// } Group;
 
 int selectMenu()
 {
@@ -25,6 +33,7 @@ int selectMenu()
     printf("************************\n");
     printf("\n=> 메뉴를 고르시오 : ");
     scanf("%d", &menu);
+    getchar();
 
     return menu;
 }
@@ -69,4 +78,14 @@ int deleteStudent(Student *s)
     s->year = -1;
 
     return 1;
+}
+
+void readGroup(Group g)
+{
+    printf("%s\t%d\t\t", g.sub, g.group_num);
+    for (int i = 0; i < g.st_num; i++)
+    {
+        printf("%s ", g.group_mem[i]);
+    }
+    printf("\n");
 }
