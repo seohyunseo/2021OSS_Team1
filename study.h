@@ -29,4 +29,6 @@ int deleteStudent(Student *S);
 
 void readGroup(Group g);
 
+char* rtrim(char *s);
+
 #endif
