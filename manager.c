@@ -70,12 +70,12 @@ int listGroup(Group *g, int count)
 void saveStudents(Student s[], int count)
 {
     FILE *fp;
-    char fileName[30];
+    // char fileName[30];
 
-    printf("저장할 파일의 이름(ex. student_list1.txt) : ");
-    scanf("%s", fileName);
+    // printf("저장할 파일의 이름(ex. student_list1.txt) : ");
+    // scanf("%s", fileName);
 
-    fp = fopen(fileName, "wt");
+    fp = fopen("student_list.txt", "wt");
 
     for (int i = 0; i < count; i++)
     {
@@ -93,11 +93,11 @@ int loadStudents(Student *s)
     int i = 0;
     FILE *fp;
 
-    char fileName[30];
-    printf("불러올 파일 이름(ex. student_list1.txt): ");
-    scanf("%s", fileName);
+    // char fileName[30];
+    // printf("불러올 파일 이름(ex. student_list1.txt): ");
+    // scanf("%s", fileName);
 
-    fp = fopen(fileName, "rt");
+    fp = fopen("student_list.txt", "rt");
     for (i = 0; i < 100; i++)
     {
         fscanf(fp, "%s", s[i].name);
