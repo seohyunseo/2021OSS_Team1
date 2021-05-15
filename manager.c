@@ -5,7 +5,7 @@
 int listStudent(Student *s, int count)
 {
     int i;
-    printf("No.\t ì´ë¦„\tí•™ë²ˆ\t\tí•™ë…„\tê³¼ëª©\n");
+    printf("No.\t ÀÌ¸§\tÇĞ¹ø\t\tÇĞ³â\t°ú¸ñ\n");
     for (i = 0; i < count; i++)
     {
         if (s[i].year == -1)
@@ -22,7 +22,7 @@ int selectStudent(Student *s, int count)
 {
     int no;
     listStudent(s, count);
-    printf("í•™ìƒ ëª©ë¡ë²ˆí˜¸(ì·¨ì†Œ:0) : ");
+    printf("ÇĞ»ı ¸ñ·Ï¹øÈ£(Ãë¼Ò:0) : ");
     scanf("%d", &no);
     getchar();
     return no;
@@ -32,7 +32,7 @@ int makeGroup(Student *s, Group *g, int count)
 {
 
     char targetsub[10];
-    printf("ê·¸ë£¹ì„ ìƒì„±í•  ê³¼ëª©(ex. ì„±ê²½ì˜ ì´í•´) : ");
+    printf("±×·ìÀ» »ı¼ºÇÒ °ú¸ñ(ex. ¼º°æÀÇ ÀÌÇØ) : ");
     scanf("%[^\n]", targetsub);
     for (int i = 0; i < 10; i++)
     {
@@ -48,8 +48,8 @@ int makeGroup(Student *s, Group *g, int count)
             else
                 return 1;
         }
-        printf("ë©¤ë²„ ìˆ˜ : %d", g[i].st_num);
-        printf("ê·¸ë£¹ ìˆ˜ : %d", g[i].group_num);
+        printf("¸â¹ö ¼ö : %d", g[i].st_num);
+        printf("±×·ì ¼ö : %d", g[i].group_num);
     }
 
     return 1;
@@ -57,7 +57,7 @@ int makeGroup(Student *s, Group *g, int count)
 int listGroup(Group *g, int count)
 {
     int i;
-    printf("ê³¼ëª©ëª…\tê·¸ë£¹ ë²ˆí˜¸\tê·¸ë£¹ì›\n");
+    printf("°ú¸ñ¸í\t±×·ì ¹øÈ£\t±×·ì¿ø\n");
     for (i = 0; i < count; i++)
     {
         readGroup(g[i]);
@@ -69,42 +69,45 @@ int listGroup(Group *g, int count)
 
 void saveStudents(Student s[], int count)
 {
-    FILE* fp;
+    FILE *fp;
     char fileName[30];
 
-    printf("ì €ì¥í•  íŒŒì¼ì˜ ì´ë¦„(ex. student_list1.txt) : ");
+    printf("ÀúÀåÇÒ ÆÄÀÏÀÇ ÀÌ¸§(ex. student_list1.txt) : ");
     scanf("%s", fileName);
-    
+
     fp = fopen(fileName, "wt");
 
-    for(int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {
-        if(s[i].year == -1) continue;
+        if (s[i].year == -1)
+            continue;
         fprintf(fp, "%s %s %d %s\n", s[i].name, s[i].id, s[i].year, s[i].sub);
     }
 
     fclose(fp);
-    printf("ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
+    printf("ÀúÀåµÇ¾ú½À´Ï´Ù.\n");
 }
 
 int loadStudents(Student *s)
 {
     int i = 0;
-    FILE* fp;
+    FILE *fp;
 
     char fileName[30];
-    printf("ë¶ˆëŸ¬ì˜¬ íŒŒì¼ ì´ë¦„(ex. student_list1.txt): ");
+    printf("ºÒ·¯¿Ã ÆÄÀÏ ÀÌ¸§(ex. student_list1.txt): ");
     scanf("%s", fileName);
 
     fp = fopen(fileName, "rt");
-    for(i = 0; i  < 100; i++){
+    for (i = 0; i < 100; i++)
+    {
         fscanf(fp, "%s", s[i].name);
-        if(feof(fp)) break;
+        if (feof(fp))
+            break;
         fscanf(fp, "%s", s[i].id);
         fscanf(fp, "%d", &s[i].year);
         fscanf(fp, " %[^\n]", s[i].sub);
     }
-    
+
     fclose(fp);
 
     return i;
@@ -115,19 +118,21 @@ void searchStudent(Student *s, int count)
     int scnt = 0;
     char target[20];
 
-    printf("ê²€ìƒ‰í•  í•™ìƒ í•™ë²ˆ(ex. 21700xxx): ");
+    printf("°Ë»öÇÒ ÇĞ»ı ÇĞ¹ø(ex. 21700xxx): ");
     scanf("%s", target);
 
-    printf("No.\t ì´ë¦„\tí•™ë²ˆ\t\tí•™ë…„\tê³¼ëª©\n");
-    for(int i = 0; i < count; i++)
+    printf("No.\t ÀÌ¸§\tÇĞ¹ø\t\tÇĞ³â\t°ú¸ñ\n");
+    for (int i = 0; i < count; i++)
     {
-        if(s[i].year == -1) continue;
-        if(strstr(s[i].id, target))
+        if (s[i].year == -1)
+            continue;
+        if (strstr(s[i].id, target))
         {
             printf("%d\t", i + 1);
             readStudent(s[i]);
             scnt++;
         }
     }
-    if (scnt == 0) printf("ë°ì´í„° ì—†ìŒ\n");
+    if (scnt == 0)
+        printf("µ¥ÀÌÅÍ ¾øÀ½\n");
 }

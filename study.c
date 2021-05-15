@@ -22,21 +22,21 @@ int selectMenu()
     int menu;
 
     printf("\n*****Study Together*****\n");
-    printf("1. í•™ìƒ ì¡°íšŒí•˜ê¸°       *\n");
-    printf("2. ê·¸ë£¹ ì¡°íšŒí•˜ê¸°       *\n");
-    printf("3. í•™ìƒ ì¶”ê°€í•˜ê¸°       *\n");
-    printf("4. í•™ìƒ ìˆ˜ì •í•˜ê¸°       *\n");
-    printf("5. í•™ìƒ ì‚­ì œí•˜ê¸°       *\n");
-    printf("6. ê·¸ë£¹ ìƒì„±í•˜ê¸°       *\n");
-    printf("7. í•™ìƒ ê²€ìƒ‰í•˜ê¸°       *\n");
-    printf("8. ê·¸ë£¹ ê²€ìƒ‰í•˜ê¸°       *\n");
-    printf("9. í•™ìƒ ì €ì¥í•˜ê¸°       *\n");
-    printf("10. ê·¸ë£¹ ì €ì¥í•˜ê¸°      *\n");
-    printf("11. í•™ìƒ ë¶ˆëŸ¬ì˜¤ê¸°      *\n");
-    printf("12. ê·¸ë£¹ ë¶ˆëŸ¬ì˜¤ê¸°      *\n");
-    printf("0. í”„ë¡œê·¸ë¨ ì¢…ë£Œ       *\n");
+    printf("1. ÇĞ»ı Á¶È¸ÇÏ±â       *\n");
+    printf("2. ±×·ì Á¶È¸ÇÏ±â       *\n");
+    printf("3. ÇĞ»ı Ãß°¡ÇÏ±â       *\n");
+    printf("4. ÇĞ»ı ¼öÁ¤ÇÏ±â       *\n");
+    printf("5. ÇĞ»ı »èÁ¦ÇÏ±â       *\n");
+    printf("6. ±×·ì »ı¼ºÇÏ±â       *\n");
+    printf("7. ÇĞ»ı °Ë»öÇÏ±â       *\n");
+    printf("8. ±×·ì °Ë»öÇÏ±â       *\n");
+    printf("9. ÇĞ»ı ÀúÀåÇÏ±â       *\n");
+    printf("10. ±×·ì ÀúÀåÇÏ±â      *\n");
+    printf("11. ÇĞ»ı ºÒ·¯¿À±â      *\n");
+    printf("12. ±×·ì ºÒ·¯¿À±â      *\n");
+    printf("0. ÇÁ·Î±×·¥ Á¾·á       *\n");
     printf("************************\n");
-    printf("\n=> ë©”ë‰´ë¥¼ ê³ ë¥´ì‹œì˜¤ : ");
+    printf("\n=> ¸Ş´º¸¦ °í¸£½Ã¿À : ");
     scanf("%d", &menu);
     getchar();
 
@@ -45,14 +45,14 @@ int selectMenu()
 
 int createStudent(Student *s)
 {
-    printf("í•™ìƒ ì´ë¦„(ex. í™ê¸¸ë™) : ");
+    printf("ÇĞ»ı ÀÌ¸§(ex. È«±æµ¿) : ");
     scanf("%s", s->name);
-    printf("í•™ë²ˆ (ex. 21700***) : ");
+    printf("ÇĞ¹ø (ex. 21700***) : ");
     scanf("%s", s->id);
-    printf("í•™ë…„ : ");
+    printf("ÇĞ³â : ");
     scanf("%d", &s->year);
     getchar();
-    printf("í¬ë§ ê³¼ëª© (ex. ì„±ê²½ì˜ ì´í•´) :");
+    printf("Èñ¸Á °ú¸ñ (ex. ¼º°æÀÇ ÀÌÇØ) :");
     scanf("%[^\n]", s->sub);
 
     return 1;
@@ -65,14 +65,14 @@ void readStudent(Student s)
 
 int updateStudent(Student *s)
 {
-    printf("í•™ìƒ ì´ë¦„(ex. í™ê¸¸ë™) : ");
+    printf("ÇĞ»ı ÀÌ¸§(ex. È«±æµ¿) : ");
     scanf("%s", s->name);
-    printf("í•™ë²ˆ (ex. 21700***) : ");
+    printf("ÇĞ¹ø (ex. 21700***) : ");
     scanf("%s", s->id);
-    printf("í•™ë…„ : ");
+    printf("ÇĞ³â : ");
     scanf("%d", &s->year);
     getchar();
-    printf("í¬ë§ ê³¼ëª© (ex. ì„±ê²½ì˜ ì´í•´) :");
+    printf("Èñ¸Á °ú¸ñ (ex. ¼º°æÀÇ ÀÌÇØ) :");
     scanf("%[^\n]", s->sub);
 
     return 1;

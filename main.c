@@ -19,7 +19,7 @@ int main()
             break;
         if ((menu != 3) && (count_st == 0) && (menu != 11) && (menu != 12))
         {
-            printf("=> ë°ì´í„° ì—†ìŒ\n");
+            printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
             continue;
         }
         else if (menu == 3)
@@ -32,7 +32,7 @@ int main()
             int islist;
             islist = listStudent(st, index_st);
             if (islist == 0)
-                printf("=> ë°ì´í„° ì—†ìŒ\n");
+                printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
         }
         else if (menu == 4)
         {
@@ -44,9 +44,9 @@ int main()
             else if (no == 0)
                 continue;
             if (isup == 1)
-                printf("\n=> ìˆ˜ì • ì„±ê³µ\n");
+                printf("\n=> ¼öÁ¤ ¼º°ø\n");
             else
-                printf("\n=> ìˆ˜ì • ì‹¤íŒ¨\n");
+                printf("\n=> ¼öÁ¤ ½ÇÆĞ\n");
         }
         else if (menu == 5)
         {
@@ -55,22 +55,22 @@ int main()
             no = selectStudent(st, index_st);
             if (no > 0)
             {
-                printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (ì‚­ì œ:1)");
+                printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (»èÁ¦:1)");
                 scanf("%d", &con);
                 if (con == 1)
                 {
                     isdel = deleteStudent(&st[no - 1]);
                     if (isdel == 1)
                     {
-                        printf("\n=> ì‚­ì œ ì„±ê³µ\n");
+                        printf("\n=> »èÁ¦ ¼º°ø\n");
                         count_st--;
                     }
                     else
-                        printf("\n=> ì‚­ì œ ì‹¤íŒ¨\n");
+                        printf("\n=> »èÁ¦ ½ÇÆĞ\n");
                 }
                 else
                 {
-                    printf("\n=> ì‚­ì œ ì·¨ì†Œ\n");
+                    printf("\n=> »èÁ¦ Ãë¼Ò\n");
                     continue;
                 }
             }
@@ -84,7 +84,7 @@ int main()
             int islist;
             islist = listGroup(gr, index_gr);
             if (islist == 0)
-                printf("=> ë°ì´í„° ì—†ìŒ\n");
+                printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
         }
         else if (menu == 7)
         {
@@ -92,18 +92,21 @@ int main()
         }
         else if (menu == 9)
         {
-            if (count_st == 0) printf("ë°ì´í„° ì—†ìŒ\n");
-            else saveStudents(st, index_st);
+            if (count_st == 0)
+                printf("µ¥ÀÌÅÍ ¾øÀ½\n");
+            else
+                saveStudents(st, index_st);
         }
         else if (menu == 11)
         {
             int c = loadStudents(st);
-            if (c == 0) printf("íŒŒì¼ ë°ì´í„° ì—†ìŒ\n");
+            if (c == 0)
+                printf("ÆÄÀÏ µ¥ÀÌÅÍ ¾øÀ½\n");
             else
             {
                 index_st = c;
                 count_st = c;
-                printf("ë¶ˆëŸ¬ì˜¤ê¸° ì™„ë£Œ\n");
+                printf("ºÒ·¯¿À±â ¿Ï·á\n");
             }
         }
     }
