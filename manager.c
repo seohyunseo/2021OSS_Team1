@@ -5,7 +5,7 @@
 int listStudent(Student *s, int count)
 {
     int i;
-    printf("No.\t ì´ë¦„\tí•™ë²ˆ\t\tí•™ë…„\tê³¼ëª©\n");
+    printf("No.\t ÀÌ¸§\tÇĞ¹ø\t\tÇĞ³â\t°ú¸ñ\n");
     for (i = 0; i < count; i++)
     {
         if (s[i].year == -1)
@@ -22,7 +22,7 @@ int selectStudent(Student *s, int count)
 {
     int no;
     listStudent(s, count);
-    printf("í•™ìƒ ëª©ë¡ë²ˆí˜¸(ì·¨ì†Œ:0) : ");
+    printf("ÇĞ»ı ¸ñ·Ï¹øÈ£(Ãë¼Ò:0) : ");
     scanf("%d", &no);
     getchar();
     return no;
@@ -30,31 +30,37 @@ int selectStudent(Student *s, int count)
 
 int makeGroup(Student *s, Group *g, int count)
 {
+
     char targetsub[20];
     int gn = 0;
 
-    printf("æ´¹ëªƒï¼™ÂÂ„ ÂƒÂÂ„ê¹ŠÂ• æ€¨ì‡°ã‰(ex. Â„ê¹ƒê¼ÂÂ˜ ÂëŒ„Â•) : ");
-
+    printf("±×·ìÀ» »ı¼ºÇÒ °ú¸ñ(ex. ¼º°æÀÇ ÀÌÇØ) : ");
     scanf("%[^\n]", targetsub);
 
-    for(int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++)
+    {
         g[i].group_num = i + 1;
         g[i].st_num = 0;
         strcpy(g[i].sub, targetsub);
     }
 
-    for(int j = 0; j < count; j++){
-        if(strstr(s[j].sub, targetsub)){
+    for (int j = 0; j < count; j++)
+    {
+        if (s[j].year == -1)
+            continue;
+        if (strstr(s[j].sub, targetsub))
+        {
             strcpy(g[gn].group_mem[g[gn].st_num].id, s[j].id);
             strcpy(g[gn].group_mem[g[gn].st_num].name, s[j].name);
             strcpy(g[gn].group_mem[g[gn].st_num].sub, s[j].sub);
             g[gn].group_mem[g[gn].st_num].year = s[j].year;
             g[gn].st_num++;
-            if(g[gn].st_num == 4) gn++;
+            if (g[gn].st_num == 4)
+                gn++;
         }
     }
 
-    printf("=> æ´¹ëªƒï¼™ ÂƒÂÂ„ Â™Â„çŒ·ÂŒ\n");
+    printf("=> ±×·ì »ı¼º ¿Ï·á\n");
 
     return gn;
 }
@@ -62,7 +68,6 @@ int makeGroup(Student *s, Group *g, int count)
 int listGroup(Group *g, int count)
 {
     int i;
-
     for (i = 0; i < count; i++)
     {
         readGroup(g[i]);
@@ -75,12 +80,12 @@ int listGroup(Group *g, int count)
 void saveStudents(Student s[], int count)
 {
     FILE *fp;
-    // char fileName[30];
+    char fileName[30];
 
-    // printf("ì €ì¥í•  íŒŒì¼ì˜ ì´ë¦„(ex. student_list1.txt) : ");
-    // scanf("%s", fileName);
+    printf("ÀúÀåÇÒ ÆÄÀÏÀÇ ÀÌ¸§(ex. Student1.txt) : ");
+    scanf("%s", fileName);
 
-    fp = fopen("student_list.txt", "wt");
+    fp = fopen(fileName, "wt");
 
     for (int i = 0; i < count; i++)
     {
@@ -90,7 +95,7 @@ void saveStudents(Student s[], int count)
     }
 
     fclose(fp);
-    printf("ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
+    printf("ÀúÀåµÇ¾ú½À´Ï´Ù.\n");
 }
 
 int loadStudents(Student *s)
@@ -98,11 +103,11 @@ int loadStudents(Student *s)
     int i = 0;
     FILE *fp;
 
-    // char fileName[30];
-    // printf("ë¶ˆëŸ¬ì˜¬ íŒŒì¼ ì´ë¦„(ex. student_list1.txt): ");
-    // scanf("%s", fileName);
+    char fileName[30];
+    printf("ºÒ·¯¿Ã ÆÄÀÏ ÀÌ¸§(ex. sampleStudents.txt): ");
+    scanf("%s", fileName);
 
-    fp = fopen("student_list.txt", "rt");
+    fp = fopen(fileName, "rt");
     for (i = 0; i < 100; i++)
     {
         fscanf(fp, "%s", s[i].name);
@@ -123,10 +128,10 @@ void searchStudent(Student *s, int count)
     int scnt = 0;
     char target[20];
 
-    printf("ê²€ìƒ‰í•  í•™ìƒ í•™ë²ˆ(ex. 21700xxx): ");
-    scanf("%s", target);
+    printf("°Ë»öÇÒ ÇĞ»ı ÇĞ¹ø(ex. 21700xxx): ");
+    scanf("%[^\n]", target);
 
-    printf("No.\t ì´ë¦„\tí•™ë²ˆ\t\tí•™ë…„\tê³¼ëª©\n");
+    printf("No.\t ÀÌ¸§\tÇĞ¹ø\t\tÇĞ³â\t°ú¸ñ\n");
     for (int i = 0; i < count; i++)
     {
         if (s[i].year == -1)
@@ -138,56 +143,61 @@ void searchStudent(Student *s, int count)
             scnt++;
         }
     }
-    if (scnt == 0) printf("Âê³—ÂëŒ„Â„ Â—Â†ÂÂŒ\n");
+    if (scnt == 0)
+        printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
 }
 
 void saveGroups(Group g[], int count)
 {
-    FILE* fp;
+    FILE *fp;
     char fileName[30];
 
-    printf("ï¿½Â€ÂÎ½Â• ÂŒÂŒÂì‡±ÂÂ˜ ÂëŒ€Â„(ex. Group1.txt) : ");
+    printf("ÀúÀåÇÒ ÆÄÀÏÀÇ ÀÌ¸§(ex. gr_¼º°æÀÇÀÌÇØ.txt) : ");
     scanf("%s", fileName);
-    
+
     fp = fopen(fileName, "wt");
 
-    for(int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {
         fprintf(fp, "Group%d :\n", g[i].group_num);
-        for(int j = 0; j < 4; j++){
+        for (int j = 0; j < 4; j++)
+        {
             fprintf(fp, "%s %s %d %s\n", g[i].group_mem[j].name, g[i].group_mem[j].id, g[i].group_mem[j].year, g[i].group_mem[j].sub);
         }
     }
 
     fclose(fp);
-    printf("ï¿½Â€ÂÎ»ÂÂ˜Â—ÂˆÂŠë“¬Â‹ÂˆÂ‹.\n");
+    printf("=> ÀúÀå¿Ï·á\n");
 }
 
-int loadGroups(Group *g)
-{
-    int i = 0;
-    FILE* fp;
+// int loadGroups(Group *g)
+// {
+//     int i = 0;
+//     FILE *fp;
 
-    char fileName[30];
-    printf("éºÂˆÂŸÑŠÂ˜ ÂŒÂŒÂ ÂëŒ€Â„(ex. Group1.txt): ");
-    scanf("%s", fileName);
+//     char fileName[30];
+//     printf("ºÒ·¯¿Ã ÆÄÀÏ ÀÌ¸§(ex. sampleGroups.txt): ");
+//     scanf("%s", fileName);
 
-    fp = fopen(fileName, "rt");
-    for(i = 0; i  < 100; i++){
-        fscanf(fp, "Group%d :\n", &g[i].group_num);
-        if(feof(fp)) break;
-        for(int j = 0; j < 4; j++){
-            fscanf(fp, "%s", g[i].group_mem[j].name);
-            fscanf(fp, "%s", g[i].group_mem[j].id);
-            fscanf(fp, "%d", &g[i].group_mem[j].year);
-            fscanf(fp, " %[^\n]", g[i].group_mem[j].sub);
-        }
-    }
-    
-    fclose(fp);
+//     fp = fopen(fileName, "rt");
+//     for (i = 0; i < 100; i++)
+//     {
+//         // fscanf(fp, "Group%d :\n", &g[i].group_num);
+//         if (feof(fp))
+//             break;
+//         for (int j = 0; j < 4; j++)
+//         {
+//             fscanf(fp, "%s ", g[i].group_mem[j].name);
+//             fscanf(fp, "%s ", g[i].group_mem[j].id);
+//             fscanf(fp, "%d", &g[i].group_mem[j].year);
+//             fscanf(fp, " %[^\n]", g[i].group_mem[j].sub);
+//         }
+//     }
 
-    return i;
-}
+//     fclose(fp);
+
+//     return i;
+// }
 
 void searchGroup(Group *g, int count)
 {
@@ -195,21 +205,24 @@ void searchGroup(Group *g, int count)
     char targetSub[20];
     int targetNum = 0;
 
-    printf("å¯ƒÂ€ÂƒÂ‰Â• æ´¹ëªƒï¼™ æ€¨ì‡°ã‰(ex. Â„ê¹ƒê¼ÂÂ˜ ÂëŒ„Â•): ");
+    printf("°Ë»öÇÒ ±×·ì °ú¸ñ(ex. ¼º°æÀÇ ÀÌÇØ): ");
     scanf("%s", targetSub);
 
-    printf("å¯ƒÂ€ÂƒÂ‰Â• æ´¹ëªƒï¼™ÂÂ˜ è¸°ÂˆÂ˜(ex. 1): ");
+    printf("°Ë»öÇÒ ±×·ìÀÇ ¹øÈ£(ex. 1): ");
     scanf("%d", &targetNum);
 
-    for(int i = 0; i < count; i++){
-        if(g[i].group_num == targetNum){
+    for (int i = 0; i < count; i++)
+    {
+        if (g[i].group_num == targetNum)
+        {
             printf("Group%d :\n", g[i].group_num);
-            for(int j = 0; j < 4; j++){
+            for (int j = 0; j < 4; j++)
+            {
                 readStudent(g[i].group_mem[j]);
             }
             scnt++;
         }
     }
-    if (scnt == 0) printf("Âê³—ÂëŒ„Â„ Â—Â†ÂÂŒ\n");
-
+    if (scnt == 0)
+        printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
 }

@@ -17,9 +17,9 @@ int main()
 
         if (menu == 0)
             break;
-        if ((menu != 3) && (count_st == 0) && (menu != 11) && (menu != 12))
+        if ((menu != 3) && (count_st == 0 && count_gr == 0) && (menu != 12) && (menu != 10))
         {
-            printf("=> ë°ì´í„° ì—†ìŒ\n");
+            printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
             continue;
         }
         else if (menu == 3)
@@ -32,9 +32,9 @@ int main()
             int islist;
             islist = listStudent(st, index_st);
             if (islist == 0)
-                printf("=> ë°ì´í„° ì—†ìŒ\n");
+                printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
         }
-        else if (menu == 4)
+        else if (menu == 5)
         {
             int isup;
             int no;
@@ -44,94 +44,96 @@ int main()
             else if (no == 0)
                 continue;
             if (isup == 1)
-                printf("\n=> ìˆ˜ì • ì„±ê³µ\n");
+                printf("\n=> ¼öÁ¤ ¼º°ø\n");
             else
-                printf("\n=> ìˆ˜ì • ì‹¤íŒ¨\n");
+                printf("\n=> ¼öÁ¤ ½ÇÆÐ\n");
         }
-        else if (menu == 5)
+        else if (menu == 7)
         {
             int isdel;
             int no, con;
             no = selectStudent(st, index_st);
             if (no > 0)
             {
-                printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (ì‚­ì œ:1)");
+                printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (»èÁ¦:1)");
                 scanf("%d", &con);
                 if (con == 1)
                 {
                     isdel = deleteStudent(&st[no - 1]);
                     if (isdel == 1)
                     {
-                        printf("\n=> ì‚­ì œ ì„±ê³µ\n");
+                        printf("\n=> »èÁ¦ ¼º°ø\n");
                         count_st--;
                     }
                     else
-                        printf("\n=> ì‚­ì œ ì‹¤íŒ¨\n");
+                        printf("\n=> »èÁ¦ ½ÇÆÐ\n");
                 }
                 else
                 {
-                    printf("\n=> ì‚­ì œ ì·¨ì†Œ\n");
+                    printf("\n=> »èÁ¦ Ãë¼Ò\n");
                     continue;
                 }
             }
         }
-        else if (menu == 6)
+        else if (menu == 4)
         {
-            count_gr += makeGroup(st, &gr[index_gr++], index_st);
+            count_gr += makeGroup(st, gr, index_st);
         }
         else if (menu == 2)
         {
             if (count_gr == 0)
-                printf("=> Âê³—ÂëŒ„Â„ Â—Â†ÂÂŒ\n");
+                printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
             else
                 listGroup(gr, count_gr);
         }
-        else if (menu == 7)
+        else if (menu == 9)
         {
             searchStudent(st, index_st);
         }
-        else if (menu == 8)
+        else if (menu == 6)
         {
             searchGroup(gr, count_gr);
         }
-        else if (menu == 9)
+        else if (menu == 11)
         {
             if (count_st == 0)
-                printf("ë°ì´í„° ì—†ìŒ\n");
+                printf("=> µ¥ÀÌÅÍ ¾øÀ½\n");
             else
                 saveStudents(st, index_st);
         }
-        else if (menu == 11)
+        else if (menu == 12)
         {
             int c = loadStudents(st);
             if (c == 0)
-                printf("íŒŒì¼ ë°ì´í„° ì—†ìŒ\n");
+                printf("=> ÆÄÀÏ µ¥ÀÌÅÍ ¾øÀ½\n");
             else
             {
                 index_st = c;
                 count_st = c;
-                printf("ë¶ˆëŸ¬ì˜¤ê¸° ì™„ë£Œ\n");
+                printf("=> ºÒ·¯¿À±â ¿Ï·á\n");
             }
         }
-        else if (menu == 10)
+        else if (menu == 8)
         {
-            if(count_gr == 0) printf("=> Âê³—ÂëŒ„Â„ Â—Â†ÂÂŒ!");
-            else 
-            {
-                saveGroups(gr, count_gr);
-                printf("ï¿½Â€ÂžÎ¼Â™Â„çŒ·ÂŒ\n");
-            }
-        }
-        else if (menu == 12)
-        {
-            int c = loadGroups(gr);
-            if (c == 0) printf("ÂŒÂŒÂ Âê³—ÂëŒ„Â„ Â—Â†ÂÂŒ\n");
+            if (count_gr == 0)
+                printf("=> µ¥ÀÌÅÍ ¾øÀ½");
             else
             {
-                index_gr = c;
-                count_gr = c;
-                printf("éºÂˆÂŸÑŠÂ˜ã…ºë¦° Â™Â„çŒ·ÂŒ\n");
+                saveGroups(gr, count_gr);
+                printf("=> ÀúÀå¿Ï·á\n");
             }
         }
+        // else if (menu == 10)
+        // {
+        //     int c = loadGroups(gr);
+        //     if (c == 0)
+        //         printf("=> ÆÄÀÏ µ¥ÀÌÅÍ ¾øÀ½\n");
+        //     else
+        //     {
+        //         index_gr = c;
+        //         count_gr = c;
+        //         printf("=> ºÒ·¯¿À±â ¿Ï·á\n");
+        //     }
+        // }
     }
 }
