@@ -12,7 +12,7 @@ typedef struct
 typedef struct
 {
     char sub[20];
-    char group_mem[4][10];
+    Student group_mem[4];
     int group_num;
     int st_num;
 } Group;
@@ -29,6 +29,8 @@ int deleteStudent(Student *S);
 
 void readGroup(Group g);
 
-char* rtrim(char *s);
+void addGroupMember(Student s, Student g);
+
+void setGroup(Group g, int groupNumber);
 
 #endif

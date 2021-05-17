@@ -31,33 +31,35 @@ int selectStudent(Student *s, int count)
 int makeGroup(Student *s, Group *g, int count)
 {
 
-    char targetsub[10];
+    char targetsub[20];
+    int gn = 0;
+
     printf("그룹을 생성할 과목(ex. 성경의 이해) : ");
     scanf("%[^\n]", targetsub);
-    for (int i = 0; i < 10; i++)
-    {
-        for (int j = 0; j < count; j++)
-        {
-            if (strstr(s[i].sub, targetsub))
-            {
-                strcpy(g->group_mem[j], s[j].id);
-                strcpy(g->sub, targetsub);
-                g->group_num = i + 1;
-                g->st_num = j + 1;
-            }
-            else
-                return 1;
-        }
-        printf("멤버 수 : %d", g[i].st_num);
-        printf("그룹 수 : %d", g[i].group_num);
+
+    for(int i = 0; i < 10; i++){
+        g[i].group_num = i + 1;
+        g[i].st_num = 0;
+        strcpy(g[i].sub, targetsub);
     }
 
-    return 1;
+    for(int j = 0; j < count; j++){
+        if(strstr(s[j].sub, targetsub)){
+            strcpy(g[gn].group_mem[g[gn].st_num].id, s[j].id);
+            strcpy(g[gn].group_mem[g[gn].st_num].name, s[j].name);
+            strcpy(g[gn].group_mem[g[gn].st_num].sub, s[j].sub);
+            g[gn].group_mem[g[gn].st_num].year = s[j].year;
+            g[gn].st_num++;
+            if(g[gn].st_num == 4) gn++;
+        }
+    }
+
+    return gn;
 }
+
 int listGroup(Group *g, int count)
 {
     int i;
-    printf("과목명\t그룹 번호\t그룹원\n");
     for (i = 0; i < count; i++)
     {
         readGroup(g[i]);

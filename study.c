@@ -87,10 +87,18 @@ int deleteStudent(Student *s)
 
 void readGroup(Group g)
 {
-    printf("%s\t%d\t\t", g.sub, g.group_num);
-    for (int i = 0; i < g.st_num; i++)
+    printf("Group%d :\n", g.group_num);
+    for (int i = 0; i < 4; i++)
     {
-        printf("%s ", g.group_mem[i]);
+        readStudent(g.group_mem[i]);
     }
     printf("\n");
+}
+
+void addGroupMember(Student s, Student g){
+
+    strcpy(g.name, s.name);
+    strcpy(g.id, s.id);
+    strcpy(g.sub, s.sub);
+    g.year = s.year;
 }

@@ -81,10 +81,10 @@ int main()
         }
         else if (menu == 2)
         {
-            int islist;
-            islist = listGroup(gr, index_gr);
-            if (islist == 0)
+            if (count_gr == 0)
                 printf("=> 데이터 없음\n");
+            else
+                listGroup(gr, count_gr);
         }
         else if (menu == 7)
         {
