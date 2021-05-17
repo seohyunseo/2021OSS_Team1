@@ -82,7 +82,7 @@ int main()
         else if (menu == 2)
         {
             if (count_gr == 0)
-                printf("=> 데이터 없음\n");
+                printf("=> 곗댄 \n");
             else
                 listGroup(gr, count_gr);
         }
@@ -96,13 +96,16 @@ int main()
         }
         else if (menu == 9)
         {
-            if (count_st == 0) printf("데이터 없음\n");
-            else saveStudents(st, index_st);
+            if (count_st == 0)
+                printf("데이터 없음\n");
+            else
+                saveStudents(st, index_st);
         }
         else if (menu == 11)
         {
             int c = loadStudents(st);
-            if (c == 0) printf("파일 데이터 없음\n");
+            if (c == 0)
+                printf("파일 데이터 없음\n");
             else
             {
                 index_st = c;
@@ -112,22 +115,22 @@ int main()
         }
         else if (menu == 10)
         {
-            if(count_gr == 0) printf("=> 데이터 없음!");
+            if(count_gr == 0) printf("=> 곗댄 !");
             else 
             {
                 saveGroups(gr, count_gr);
-                printf("저장완료\n");
+                printf("�μ猷\n");
             }
         }
         else if (menu == 12)
         {
             int c = loadGroups(gr);
-            if (c == 0) printf("파일 데이터 없음\n");
+            if (c == 0) printf(" 곗댄 \n");
             else
             {
                 index_gr = c;
                 count_gr = c;
-                printf("불러오기 완료\n");
+                printf("遺ъㅺ린 猷\n");
             }
         }
     }

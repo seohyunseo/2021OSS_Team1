@@ -30,11 +30,11 @@ int selectStudent(Student *s, int count)
 
 int makeGroup(Student *s, Group *g, int count)
 {
-
     char targetsub[20];
     int gn = 0;
 
-    printf("그룹을 생성할 과목(ex. 성경의 이해) : ");
+    printf("洹몃９ 깊 怨쇰ぉ(ex. 깃꼍 댄) : ");
+
     scanf("%[^\n]", targetsub);
 
     for(int i = 0; i < 10; i++){
@@ -54,7 +54,7 @@ int makeGroup(Student *s, Group *g, int count)
         }
     }
 
-    printf("=> 그룹 생성 완료\n");
+    printf("=> 洹몃９  猷\n");
 
     return gn;
 }
@@ -62,6 +62,7 @@ int makeGroup(Student *s, Group *g, int count)
 int listGroup(Group *g, int count)
 {
     int i;
+
     for (i = 0; i < count; i++)
     {
         readGroup(g[i]);
@@ -73,17 +74,18 @@ int listGroup(Group *g, int count)
 
 void saveStudents(Student s[], int count)
 {
-    FILE* fp;
-    char fileName[30];
+    FILE *fp;
+    // char fileName[30];
 
-    printf("저장할 파일의 이름(ex. student_list1.txt) : ");
-    scanf("%s", fileName);
-    
-    fp = fopen(fileName, "wt");
+    // printf("저장할 파일의 이름(ex. student_list1.txt) : ");
+    // scanf("%s", fileName);
 
-    for(int i = 0; i < count; i++)
+    fp = fopen("student_list.txt", "wt");
+
+    for (int i = 0; i < count; i++)
     {
-        if(s[i].year == -1) continue;
+        if (s[i].year == -1)
+            continue;
         fprintf(fp, "%s %s %d %s\n", s[i].name, s[i].id, s[i].year, s[i].sub);
     }
 
@@ -94,21 +96,23 @@ void saveStudents(Student s[], int count)
 int loadStudents(Student *s)
 {
     int i = 0;
-    FILE* fp;
+    FILE *fp;
 
-    char fileName[30];
-    printf("불러올 파일 이름(ex. student_list1.txt): ");
-    scanf("%s", fileName);
+    // char fileName[30];
+    // printf("불러올 파일 이름(ex. student_list1.txt): ");
+    // scanf("%s", fileName);
 
-    fp = fopen(fileName, "rt");
-    for(i = 0; i  < 100; i++){
+    fp = fopen("student_list.txt", "rt");
+    for (i = 0; i < 100; i++)
+    {
         fscanf(fp, "%s", s[i].name);
-        if(feof(fp)) break;
+        if (feof(fp))
+            break;
         fscanf(fp, "%s", s[i].id);
         fscanf(fp, "%d", &s[i].year);
         fscanf(fp, " %[^\n]", s[i].sub);
     }
-    
+
     fclose(fp);
 
     return i;
@@ -123,17 +127,18 @@ void searchStudent(Student *s, int count)
     scanf("%s", target);
 
     printf("No.\t 이름\t학번\t\t학년\t과목\n");
-    for(int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {
-        if(s[i].year == -1) continue;
-        if(strstr(s[i].id, target))
+        if (s[i].year == -1)
+            continue;
+        if (strstr(s[i].id, target))
         {
             printf("%d\t", i + 1);
             readStudent(s[i]);
             scnt++;
         }
     }
-    if (scnt == 0) printf("데이터 없음\n");
+    if (scnt == 0) printf("곗댄 \n");
 }
 
 void saveGroups(Group g[], int count)
@@ -141,7 +146,7 @@ void saveGroups(Group g[], int count)
     FILE* fp;
     char fileName[30];
 
-    printf("저장할 파일의 이름(ex. Group1.txt) : ");
+    printf("�ν 쇱 대(ex. Group1.txt) : ");
     scanf("%s", fileName);
     
     fp = fopen(fileName, "wt");
@@ -155,7 +160,7 @@ void saveGroups(Group g[], int count)
     }
 
     fclose(fp);
-    printf("저장되었습니다.\n");
+    printf("�λ듬.\n");
 }
 
 int loadGroups(Group *g)
@@ -164,7 +169,7 @@ int loadGroups(Group *g)
     FILE* fp;
 
     char fileName[30];
-    printf("불러올 파일 이름(ex. Group1.txt): ");
+    printf("遺ъ  대(ex. Group1.txt): ");
     scanf("%s", fileName);
 
     fp = fopen(fileName, "rt");
@@ -190,10 +195,10 @@ void searchGroup(Group *g, int count)
     char targetSub[20];
     int targetNum = 0;
 
-    printf("검색할 그룹 과목(ex. 성경의 이해): ");
+    printf("寃 洹몃９ 怨쇰ぉ(ex. 깃꼍 댄): ");
     scanf("%s", targetSub);
 
-    printf("검색할 그룹의 번호(ex. 1): ");
+    printf("寃 洹몃９ 踰(ex. 1): ");
     scanf("%d", &targetNum);
 
     for(int i = 0; i < count; i++){
@@ -205,5 +210,6 @@ void searchGroup(Group *g, int count)
             scnt++;
         }
     }
-    if (scnt == 0) printf("데이터 없음\n");
+    if (scnt == 0) printf("곗댄 \n");
+
 }
