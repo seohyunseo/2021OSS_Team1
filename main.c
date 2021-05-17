@@ -90,6 +90,10 @@ int main()
         {
             searchStudent(st, index_st);
         }
+        else if (menu == 8)
+        {
+            searchGroup(gr, count_gr);
+        }
         else if (menu == 9)
         {
             if (count_st == 0) printf("데이터 없음\n");
@@ -103,6 +107,26 @@ int main()
             {
                 index_st = c;
                 count_st = c;
+                printf("불러오기 완료\n");
+            }
+        }
+        else if (menu == 10)
+        {
+            if(count_gr == 0) printf("=> 데이터 없음!");
+            else 
+            {
+                saveGroups(gr, count_gr);
+                printf("저장완료\n");
+            }
+        }
+        else if (menu == 12)
+        {
+            int c = loadGroups(gr);
+            if (c == 0) printf("파일 데이터 없음\n");
+            else
+            {
+                index_gr = c;
+                count_gr = c;
                 printf("불러오기 완료\n");
             }
         }

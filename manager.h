@@ -9,8 +9,8 @@ int makeGroup(Student *s, Group *g, int count);
 void searchStudent(Student *s, int count);
 void searchGroup(Group *g, int count);
 
-void saveGroup(Group *g, int count);
-int loadGroup(Group *g);
+void saveGroups(Group g[], int count);
+int loadGroups(Group *g);
 
 void saveStudents(Student s[], int count);
 int loadStudents(Student *s);

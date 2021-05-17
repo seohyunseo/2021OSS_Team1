@@ -54,6 +54,8 @@ int makeGroup(Student *s, Group *g, int count)
         }
     }
 
+    printf("=> 그룹 생성 완료\n");
+
     return gn;
 }
 
@@ -128,6 +130,78 @@ void searchStudent(Student *s, int count)
         {
             printf("%d\t", i + 1);
             readStudent(s[i]);
+            scnt++;
+        }
+    }
+    if (scnt == 0) printf("데이터 없음\n");
+}
+
+void saveGroups(Group g[], int count)
+{
+    FILE* fp;
+    char fileName[30];
+
+    printf("저장할 파일의 이름(ex. Group1.txt) : ");
+    scanf("%s", fileName);
+    
+    fp = fopen(fileName, "wt");
+
+    for(int i = 0; i < count; i++)
+    {
+        fprintf(fp, "Group%d :\n", g[i].group_num);
+        for(int j = 0; j < 4; j++){
+            fprintf(fp, "%s %s %d %s\n", g[i].group_mem[j].name, g[i].group_mem[j].id, g[i].group_mem[j].year, g[i].group_mem[j].sub);
+        }
+    }
+
+    fclose(fp);
+    printf("저장되었습니다.\n");
+}
+
+int loadGroups(Group *g)
+{
+    int i = 0;
+    FILE* fp;
+
+    char fileName[30];
+    printf("불러올 파일 이름(ex. Group1.txt): ");
+    scanf("%s", fileName);
+
+    fp = fopen(fileName, "rt");
+    for(i = 0; i  < 100; i++){
+        fscanf(fp, "Group%d :\n", &g[i].group_num);
+        if(feof(fp)) break;
+        for(int j = 0; j < 4; j++){
+            fscanf(fp, "%s", g[i].group_mem[j].name);
+            fscanf(fp, "%s", g[i].group_mem[j].id);
+            fscanf(fp, "%d", &g[i].group_mem[j].year);
+            fscanf(fp, " %[^\n]", g[i].group_mem[j].sub);
+        }
+    }
+    
+    fclose(fp);
+
+    return i;
+}
+
+void searchGroup(Group *g, int count)
+{
+    int scnt = 0;
+    char targetSub[20];
+    int targetNum = 0;
+
+    printf("검색할 그룹 과목(ex. 성경의 이해): ");
+    scanf("%s", targetSub);
+
+    printf("검색할 그룹의 번호(ex. 1): ");
+    scanf("%d", &targetNum);
+
+    for(int i = 0; i < count; i++){
+        if(g[i].group_num == targetNum){
+            printf("Group%d :\n", g[i].group_num);
+            for(int j = 0; j < 4; j++){
+                readStudent(g[i].group_mem[j]);
+            }
             scnt++;
         }
     }
