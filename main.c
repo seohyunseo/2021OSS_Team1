@@ -17,7 +17,7 @@ int main()
 
         if (menu == 0)
             break;
-        if ((menu != 3) && (count_st == 0 && count_gr == 0) && (menu != 12) && (menu != 10))
+        if ((menu != 3) && (count_st == 0 && count_gr == 0) && (menu != 11))
         {
             printf("=> 데이터 없음\n");
             continue;
