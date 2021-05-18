@@ -94,14 +94,14 @@ int main()
         {
             searchGroup(gr, count_gr);
         }
-        else if (menu == 11)
+        else if (menu == 10)
         {
             if (count_st == 0)
                 printf("=> 데이터 없음\n");
             else
                 saveStudents(st, index_st);
         }
-        else if (menu == 12)
+        else if (menu == 11)
         {
             int c = loadStudents(st);
             if (c == 0)
@@ -123,5 +123,5 @@ int main()
                 printf("=> 저장완료\n");
             }
         }
-        }
+    }
 }
