@@ -8,7 +8,7 @@ int main()
     Group gr[10];
 
     int count_st = 0, count_gr = 0;
-    int index_st = 0, index_gr = 0;
+    int index_st = 0;
     int menu;
 
     while (1)
@@ -77,7 +77,7 @@ int main()
         }
         else if (menu == 4)
         {
-            count_gr += makeGroup(st, gr, index_st);
+            count_gr = makeGroup(st, gr, index_st);
         }
         else if (menu == 2)
         {
@@ -123,17 +123,5 @@ int main()
                 printf("=> 저장완료\n");
             }
         }
-        // else if (menu == 10)
-        // {
-        //     int c = loadGroups(gr);
-        //     if (c == 0)
-        //         printf("=> 파일 데이터 없음\n");
-        //     else
-        //     {
-        //         index_gr = c;
-        //         count_gr = c;
-        //         printf("=> 불러오기 완료\n");
-        //     }
-        // }
-    }
+        }
 }

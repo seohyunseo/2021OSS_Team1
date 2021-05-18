@@ -170,35 +170,6 @@ void saveGroups(Group g[], int count)
     printf("=> 저장완료\n");
 }
 
-// int loadGroups(Group *g)
-// {
-//     int i = 0;
-//     FILE *fp;
-
-//     char fileName[30];
-//     printf("불러올 파일 이름(ex. sampleGroups.txt): ");
-//     scanf("%s", fileName);
-
-//     fp = fopen(fileName, "rt");
-//     for (i = 0; i < 100; i++)
-//     {
-//         // fscanf(fp, "Group%d :\n", &g[i].group_num);
-//         if (feof(fp))
-//             break;
-//         for (int j = 0; j < 4; j++)
-//         {
-//             fscanf(fp, "%s ", g[i].group_mem[j].name);
-//             fscanf(fp, "%s ", g[i].group_mem[j].id);
-//             fscanf(fp, "%d", &g[i].group_mem[j].year);
-//             fscanf(fp, " %[^\n]", g[i].group_mem[j].sub);
-//         }
-//     }
-
-//     fclose(fp);
-
-//     return i;
-// }
-
 void searchGroup(Group *g, int count)
 {
     int scnt = 0;
@@ -206,7 +177,7 @@ void searchGroup(Group *g, int count)
     int targetNum = 0;
 
     printf("검색할 그룹 과목(ex. 성경의 이해): ");
-    scanf("%s", targetSub);
+    scanf("%[^\n]", targetSub);
 
     printf("검색할 그룹의 번호(ex. 1): ");
     scanf("%d", &targetNum);
